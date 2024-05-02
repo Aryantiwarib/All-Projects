@@ -5,59 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>climavox.in</title>
-    <link rel="stylesheet" href="new.css">
+    <link rel="stylesheet" href="Css/climavox.css">
     <!-- <link rel="stylesheet" media="screen and (max-width: 1170px)" href="phone.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Anta&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/openai"></script>
     <!--/////////////// icon ////////////////// -->
-    <link rel="icon" href=
-"https://i.postimg.cc/pL3yCGbb/11zon-cropped.png"
-		type="image/x-icon">
-    
+    <link rel="icon" href="https://i.postimg.cc/pL3yCGbb/11zon-cropped.png" type="image/x-icon">
+
 </head>
 
 <body id="body">
     <div class="fDiv">
-        <img id="cloud" src="my_website_icon.png" alt="">
+        <img id="cloud" src="Images/my_website_icon.png" alt="">
         <h3>CLIMAVOX</h3>
         <div>
-            <img src="current_location.png" id="current_location" alt="">
+            <img src="Images/current_location.png" id="current_location" alt="">
         </div>
         <div>
-            <img src="mic_icon.png" alt="none" id="micicon">
-    </div>
+            <img src="Images/mic_icon.png" alt="none" id="micicon">
+        </div>
         <div>
-            <img src="Speaker.png" alt="none" id="speaker">
-    </div>
+            <img src="Images/Speaker.png" alt="none" id="speaker">
+        </div>
 
-    <div>
-        <select id="select_language">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
-            <option value="ta">Tamil</option>
-            <option value="bn">Bengali</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <option value="pa">Punjabi</option>
-            <option value="ml">Malayalam</option>
-        </select>
-    </div>
-        
-            <div>
-                <input type="text" name="search"   id="search" placeholder="Enter the city name">
-            </div>
-            
+        <div>
+            <select id="select_language">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="ta">Tamil</option>
+                <option value="bn">Bengali</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="pa">Punjabi</option>
+                <option value="ml">Malayalam</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" name="search" id="search" placeholder="Enter the city name">
+        </div>
+
         <div class="buttons">
 
-        <div>
-            <input type="submit" id="tem" value="Search">
-        </div>
-        <div>
-            <button id="graph"><a style="text-decoration: none;color: black;" href="graph.html">graph</a></button>
-        </div>
+            <div>
+                <input type="submit" id="tem" value="Search">
+            </div>
+            <div>
+                <button id="graph"><a id="link_tag_of_graph" href="climavox_graph.html">graph</a></button>
+            </div>
 
-    </div>
+        </div>
     </div>
     <div class="sDiv">
 
@@ -68,7 +66,7 @@
 
             <div class="s1aDiv">
                 <p class="Temperature">22&deg;C</p>
-                <img id="moon" src="cartton_moon.png" alt="error">
+                <img id="moon" src="Images/cartton_moon.png" alt="error">
             </div>
 
 
@@ -78,18 +76,18 @@
             <hr id="underline">
 
             <div class="date">
-                <img id="imdate" src="cartoon_date.png" alt="">
+                <img id="imdate" src="Images/cartoon_date.png" alt="">
                 <p id="timeDate">
-                     wednesday 1, Mar
+                    wednesday 1, Mar
                 </p>
             </div>
 
             <div class="location">
-                <img id="imloc" src="cartton_location.png" alt="">
+                <img id="imloc" src="Images/cartton_location.png" alt="">
                 <p id="dailylocation">
                     Chandpur
                 </p>
-                <img id="fahrenheit" src="fahrenheit.png" alt="none">
+                <img id="fahrenheit" src="Images/fahrenheit.png" alt="none">
             </div>
 
         </div>
@@ -105,7 +103,7 @@
                 <div class="air">
                     <div class="air1">
                         <p>Air Quality Index</p>
-                        <button id="quality">Very Poor</button>
+                        <button id="quality">AQI</button>
                     </div>
                     <div class="air2">
                         <p>PM25</p>
@@ -114,8 +112,8 @@
                         <p>O<sub>3</sub></p>
                     </div>
                     <div class="air3">
-                        <img id="wind" src="cartoon_air.png" alt="">
-                        <p  id="pm25">184</p>
+                        <img id="wind" src="Images/cartoon_air.png" alt="">
+                        <p id="pm25">184</p>
                         <p id="so2">15.5</p>
                         <p id="no2">24.0</p>
                         <p id="o3">88.7</p>
@@ -130,9 +128,9 @@
                         <p id="suns">Sunset</p>
                     </div>
                     <div class="img_time">
-                        <img id="Time_sun" src="cartton_sun.png" alt="error">
+                        <img id="Time_sun" src="Images/cartton_sun.png" alt="error">
                         <p id="sunriseTime">6:30 AM</p>
-                        <img id="Time_moon" src="cartton_moon.png" alt="error">
+                        <img id="Time_moon" src="Images/cartton_moon.png" alt="error">
                         <p id="sunsetTime">6:30 PM</p>
                     </div>
                 </div>
@@ -142,28 +140,28 @@
                 <div class="humidity">
                     <p class="text">Humidity</p>
                     <div class="infohumi">
-                        <img id="whumidity" src="cartton_humidity.png" alt="">
+                        <img id="whumidity" src="Images/cartton_humidity.png" alt="">
                         <p id="H">42%</p>
                     </div>
                 </div>
                 <div class="pressure">
                     <p class="text">Pressure</p>
                     <div class="infopre">
-                        <img id="wpressure" src="cartton_presure.png" alt="">
+                        <img id="wpressure" src="Images/cartton_presure.png" alt="">
                         <p id="P">1016hpa</p>
                     </div>
                 </div>
                 <div class="visibility">
                     <p class="text">Visibility</p>
                     <div class="infovisibility">
-                        <img id="wvisibility" src="cartton_visibility.png" alt="">
+                        <img id="wvisibility" src="Images/cartton_visibility.png" alt="">
                         <p id="V">10Km</p>
                     </div>
                 </div>
                 <div class="feellike">
                     <p class="text">Feel Like</p>
                     <div class="infolike">
-                        <img id="wfeellike" src="cartton_felllike.png" alt="">
+                        <img id="wfeellike" src="Images/cartton_felllike.png" alt="">
                         <p id="FL">21&deg;c</p>
                     </div>
                 </div>
@@ -194,7 +192,7 @@
                 <p id="first_day">Monday</p>
             </div>
             <div class="second">
-                <p id="second_temp">0&deg;/0&deg;</p>                
+                <p id="second_temp">0&deg;/0&deg;</p>
                 <p id="second_date">3 Mar</p>
                 <p id="second_day">Tuesday</p>
             </div>
@@ -220,42 +218,42 @@
 
             <div class="firstb">
                 <p class="timeoftime">9PM</p>
-                <img class="icontime" src="cartton_moon.png" alt="error">
+                <img class="icontime" src="Images/cartton_moon.png" alt="error">
                 <p id="degree1">5&deg;</p>
             </div>
             <div class="secondb">
                 <p class="timeoftime">12AM</p>
-                <img class="icontime" src="cartton_moon.png" alt="error">
+                <img class="icontime" src="Images/cartton_moon.png" alt="error">
                 <p id="degree2">5&deg;</p>
             </div>
             <div class="thirdb">
                 <p class="timeoftime">3AM</p>
-                <img class="icontime" src="cartton_moon.png" alt="error">
+                <img class="icontime" src="Images/cartton_moon.png" alt="error">
                 <p id="degree3">5&deg;</p>
             </div>
             <div class="fourthb">
                 <p class="timeoftime">6AM</p>
-                <img class="icontime" src="cartton_moon.png" alt="error">
+                <img class="icontime" src="Images/cartton_moon.png" alt="error">
                 <p id="degree4">5&deg;</p>
             </div>
             <div class="fifthb">
                 <p class="timeoftime">9AM</p>
-                <img class="icontime" src="cartton_sun.png" alt="error">
+                <img class="icontime" src="Images/cartton_sun.png" alt="error">
                 <p id="degree5">5&deg;</p>
             </div>
             <div class="sixthb">
                 <p class="timeoftime">12PM</p>
-                <img class="icontime" src="cartton_sun.png" alt="error">
+                <img class="icontime" src="Images/cartton_sun.png" alt="error">
                 <p id="degree6">5&deg;</p>
             </div>
             <div class="seventhb">
                 <p class="timeoftime">3PM</p>
-                <img class="icontime" src="cartton_sun.png" alt="error">
+                <img class="icontime" src="Images/cartton_sun.png" alt="error">
                 <p id="degree7">5&deg;</p>
             </div>
             <div class="eighthb">
                 <p class="timeoftime">6PM</p>
-                <img class="icontime" src="cartton_moon.png" alt="error">
+                <img class="icontime" src="Images/cartton_moon.png" alt="error">
                 <p id="degree8">5&deg;</p>
             </div>
 
@@ -269,42 +267,42 @@
 
         <div class="firstb">
             <p class="timeoftime">9PM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow1">5km/h</p>
         </div>
         <div class="secondb">
             <p class="timeoftime">12PM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow2">5km/h</p>
         </div>
         <div class="thirdb">
             <p class="timeoftime">3AM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow3">5km/h</p>
         </div>
         <div class="fourthb">
             <p class="timeoftime">6AM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow4">5km/h</p>
         </div>
         <div class="fifthb">
             <p class="timeoftime">9AM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow5">5km/h</p>
         </div>
         <div class="sixthb">
             <p class="timeoftime">12PM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow6">5km/h</p>
         </div>
         <div class="seventhb">
             <p class="timeoftime">3PM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow7">5km/h</p>
         </div>
         <div class="eighthb">
             <p class="timeoftime">6PM</p>
-            <img class="icontime" src="cartoon_windspeed.png" alt="error">
+            <img class="icontime" src="Images/cartoon_windspeed.png" alt="error">
             <p id="windflow8">5km/h</p>
         </div>
 
@@ -312,7 +310,7 @@
     </div>
 
     <!-- <script src="graph.js"></script> -->
-    <script src="one1.js"></script>
+    <script src="js/climavox.js"></script>
 
 </body>
 
