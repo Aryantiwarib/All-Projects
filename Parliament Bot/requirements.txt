@@ -1,0 +1,8 @@
+os
+streamlit
+langchain
+langchain_community
+dotenv
+langchain_groq
+langchain_core
+langchain_google_genai
