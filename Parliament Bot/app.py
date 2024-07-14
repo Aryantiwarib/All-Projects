@@ -10,6 +10,7 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from dotenv import load_dotenv
 import time
+from PIL import Image
 
 load_dotenv()
 
@@ -17,7 +18,7 @@ load_dotenv()
 groq_api_key = os.getenv('GROQ_API_KEY')
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
-st.title("📄🤖 Parliament Bot")
+st.title("🌍 ParliamentGuru")
 
 llm = ChatGroq(
     groq_api_key=groq_api_key,
