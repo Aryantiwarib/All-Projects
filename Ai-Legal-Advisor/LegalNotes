@@ -1,0 +1,62 @@
+import streamlit as st
+import fitz  # PyMuPDF
+from PIL import Image
+import io
+import streamlit.components.v1 as components
+
+def read_pdf(pdf_path):
+    # Open the PDF file
+    pdf_document = fitz.open(pdf_path)
+    num_pages = pdf_document.page_count
+    return pdf_document, num_pages
+
+def render_page(pdf_document, page_number, max_width=800, max_height=1000):
+    page = pdf_document.load_page(page_number)
+    pix = page.get_pixmap()
+    img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+    
+    # Resize image to fit within the screen size
+    img.thumbnail((max_width, max_height))
+    return img
+
+def play_sound():
+    # Play a sound using HTML and JavaScript
+    components.html("""
+    <audio id="sound" src="page-turn.mp3" preload="auto"></audio>
+    <script>
+        document.getElementById("sound").play();
+    </script>
+    """, height=0)
+
+def main():
+    st.title("PDF Reader")
+
+    # Specify the path to your PDF file here
+    pdf_path  = "C:\\Users\\Aryan\\OneDrive\\Desktop\\Ai Tools(Projects)\\docs\\THE CONSTITUTION OF INDIA.pdf"
+
+
+    pdf_document, num_pages = read_pdf(pdf_path)
+    st.session_state.page_number = st.session_state.get('page_number', 0)
+
+    # Display the PDF page
+    st.image(render_page(pdf_document, st.session_state.page_number), use_column_width=True)
+
+    # Navigation arrows
+    col1, col2, col3 = st.columns([1, 6, 1])
+
+    with col1:
+        if st.button("◀️", key="prev"):
+            if st.session_state.page_number > 0:
+                st.session_state.page_number -= 1
+                play_sound()  # Play sound on page change
+                
+    with col3:
+        if st.button("▶️", key="next"):
+            if st.session_state.page_number < num_pages - 1:
+                st.session_state.page_number += 1
+                play_sound()  # Play sound on page change
+
+    st.write(f"Page {st.session_state.page_number + 1} of {num_pages}")
+
+if __name__ == "__main__":
+    main()
