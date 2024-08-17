@@ -4,7 +4,7 @@ from firebase_admin import credentials, firestore
 # Check if Firebase has already been initialized
 if not firebase_admin._apps:
     # Initialize Firebase Admin SDK
-    cred = credentials.Certificate('C:/Users/Aryan/Downloads/chatbot-34661-firebase-adminsdk-my29k-3bbbcfca2d.json')
+    cred = credentials.Certificate('Ai-Legal-Advisor/Ai-Chatbot.json')
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
