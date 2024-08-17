@@ -72,7 +72,7 @@ prompt = ChatPromptTemplate.from_template(
 def vector_embedding_india():
     if "vectors" not in st.session_state:
         st.session_state.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("GOOGLE_API_KEY"))
-        st.session_state.loader = PyPDFDirectoryLoader("./docs1")
+        st.session_state.loader = PyPDFDirectoryLoader("Ai-Legal-Advisor/docs1")
         st.session_state.docs = st.session_state.loader.load()
 
         if not st.session_state.docs:
