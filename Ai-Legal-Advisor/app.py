@@ -18,7 +18,7 @@ load_dotenv()
 
 st.set_page_config(
     page_title="Legal Salahkar",
-    page_icon=r"C:\Users\Aryan\OneDrive\Desktop\Ai Tools(Projects)\CLIMAVOX__4_-removebg-preview.png",  # Path to your favicon file
+    page_icon=r"Ai-Legal-Advisor/Legal-Salahkar.png",  # Path to your favicon file
     layout="wide"  # Optional: Adjust layout if needed
 )
 
