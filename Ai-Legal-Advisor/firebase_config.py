@@ -28,3 +28,4 @@ def get_chat_history(session_name):
     except Exception as e:
         print(f"Error retrieving chat history: {str(e)}")
         return []
+
