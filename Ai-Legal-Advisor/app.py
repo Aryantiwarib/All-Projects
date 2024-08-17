@@ -1,3 +1,4 @@
+
 import streamlit as st
 import os
 from firebase_config import db, save_chat_history, get_chat_history
@@ -14,7 +15,18 @@ import time
 from PIL import Image
 load_dotenv()
 
-st.sidebar.title("🌍 Global Guru")
+
+st.set_page_config(
+    page_title="Legal Salahkar",
+    page_icon=r"C:\Users\Aryan\OneDrive\Desktop\Ai Tools(Projects)\CLIMAVOX__4_-removebg-preview.png",  # Path to your favicon file
+    layout="wide"  # Optional: Adjust layout if needed
+)
+
+
+st.sidebar.title("🌍 Legal Salahkar")
+# st.sidebar.image("C:\Users\Aryan\OneDrive\Desktop\Ai Tools(Projects)\CLIMAVOX__4_-removebg-preview.png", use_column_width=True)  # Path to your logo image
+
+
 st.sidebar.markdown("<hr>", unsafe_allow_html=True)
 
 # API Keys
@@ -33,11 +45,14 @@ llm = ChatGroq(
     groq_api_key=groq_api_key,
     model_name="Llama3-8b-8192"
 )
+# pip install sentence-transformers torch
 
 # Prompt template
 prompt = ChatPromptTemplate.from_template(
     """
-    <b>Hello! 🌟 I'm Global Guru, your personal legal advisor. I’m here to assist you with your legal queries.</b>
+    <b>Hello! 🌟 I'm Legal Salahkar, your personal legal advisor. I’m here to assist you with your legal queries.
+    if i ask you question in any language please try to give me answer in that language itself.
+    </b>
 
     Here's the information you need:
 
@@ -51,10 +66,13 @@ prompt = ChatPromptTemplate.from_template(
     """
 )
 
-def vector_embedding():
+
+# /////////////////// Vector Embedding of India ///////////////////
+
+def vector_embedding_india():
     if "vectors" not in st.session_state:
         st.session_state.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("GOOGLE_API_KEY"))
-        st.session_state.loader = PyPDFDirectoryLoader("./docs")
+        st.session_state.loader = PyPDFDirectoryLoader("./docs1")
         st.session_state.docs = st.session_state.loader.load()
 
         if not st.session_state.docs:
@@ -70,18 +88,134 @@ def vector_embedding():
 
         st.session_state.vectors = FAISS.from_documents(st.session_state.final_documents, st.session_state.embeddings)
 
+
+
+
+
+
+
+# /////////////////////// FAST VECTOR EMBEDDING ///////////////////////
+
+# import joblib
+# from gensim.models import FAISS
+
+# def vector_embedding_india():
+#     if "vectors" not in st.session_state:
+#         st.session_state.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.getenv("GOOGLE_API_KEY"))
+#         st.session_state.loader = PyPDFDirectoryLoader("./docs1")
+#         st.session_state.docs = st.session_state.loader.load()
+
+#         if not st.session_state.docs:
+#             st.sidebar.error("No documents found. Please check the PDF directory.")
+#             return
+
+#         st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=1000)
+#         st.session_state.final_documents = st.session_state.text_splitter.split_documents(st.session_state.docs[:20])
+
+#         if not st.session_state.final_documents:
+#             st.sidebar.error("No documents were split. Please check the document loading and splitting.")
+#             return
+
+#         # Batch the documents for faster processing
+#         batch_size = 100
+#         batches = [st.session_state.final_documents[i:i+batch_size] for i in range(0, len(st.session_state.final_documents), batch_size)]
+
+#         # Process the batches in parallel using joblib
+#         with joblib.parallel_backend('multiprocessing', n_jobs=4):
+#             vectors = []
+#             for batch in batches:
+#                 batch_vectors = FAISS.from_documents(batch, st.session_state.embeddings)
+#                 vectors.extend(batch_vectors)
+
+#         st.session_state.vectors = vectors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# //////////////////////////// india button ////////////////////////////
 st.sidebar.markdown("<hr>", unsafe_allow_html=True)
-if st.sidebar.button("📚 Create Document Embeddings"):
-    vector_embedding()
+if st.sidebar.button("📚 India Document Embeddings"):
+    vector_embedding_india()
     st.sidebar.success("✅Vector Store DB is ready.")
     st.sidebar.success("✅Now You Can Ask The Question.")
     st.sidebar.success("✅Good To Go.")
 
 st.sidebar.markdown("<hr>", unsafe_allow_html=True)
 
+# Add a button to start a new chat
+if st.sidebar.button("🔄 Start New Chat"):
+    # Clear the session state
+    st.session_state.messages = []
+    st.session_state.selected_session = None
+    st.sidebar.success("New chat session started. 🆕")
+
+st.sidebar.markdown("<hr>", unsafe_allow_html=True)   
+
+
+
+
+
+
+
+
+
+
+
+
+import base64
+def set_background(image_file):
+    with open(image_file, "rb") as image:
+        encoded_image = base64.b64encode(image.read()).decode()
+    
+    # Create a CSS style to set the background
+    css = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded_image}");
+        background-size: cover;
+         background-size: {'35rem'} {'35rem'};
+        background-position: center;
+        background-repeat: no-repeat;
+        
+    }}
+    </style>
+    """
+    
+    # Inject CSS with st.markdown
+    st.markdown(css, unsafe_allow_html=True)
+
+set_background("nationalemblem3.png")
+
+
+
+
+
 # Custom CSS for styling
 st.markdown("""
     <style>
+                        
+    /* Change the background color of the sidebar */
+    [data-testid="stSidebar"] {
+        # background-color: #8B4513; 
+        # color:#8b4c20;
+        # font-weight: bold;
+    }
+
+
     .center-text {
         text-align: center;
     }
@@ -95,7 +229,8 @@ st.markdown("""
         margin-bottom: 1rem;
     }
     .user-message {
-        background-color: #e1f5fe;
+        background-color: #1e4f7dbd;
+        color:black;
         border-radius: 10px;
         padding: 10px;
         max-width: 100%;
@@ -103,7 +238,8 @@ st.markdown("""
         word-wrap: break-word;
     }
     .bot-message {
-        background-color: #ffecb3;
+        background-color: #ffecb39c;
+        color:black;
         border-radius: 10px;
         padding: 10px;
         max-width: 100%;
@@ -136,6 +272,7 @@ with st.sidebar.expander("Chat History Management", expanded=True):
             st.sidebar.error("Please enter a session name.")
 
     # List saved sessions
+    
     saved_sessions = [doc.id for doc in db.collection('chat_histories').stream()]
     selected_session = st.sidebar.selectbox("Load Chat History", ["Select a session"] + saved_sessions)
 
@@ -155,8 +292,55 @@ with st.container():
 # Sidebar content with centered text
 st.sidebar.markdown("<h2 class='center-text'>Developed with ❤️ for GenAI by <a href='https://www.linkedin.com/in/aryan-tiwari-174a50298/' style='text-decoration:none;'>Legal Salahkar</a></h2>", unsafe_allow_html=True)
 
+
+
+#/////////////////////////////// mic code by aryan ///////////////////////////////
+import speech_recognition as sr
+def recognize_speech():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        # st.info("Listening...")
+        audio = recognizer.listen(source)
+        try:
+            text = recognizer.recognize_google(audio)
+            return text
+        except sr.UnknownValueError:
+            return "Sorry, I did not understand the audio."
+        except sr.RequestError:
+            return "Sorry, the service is unavailable."
+
+
+if st.button("🎤 Speak"):
+    user_input = recognize_speech()
+    if user_input:
+        st.markdown(f'<div class="chat-message user-message">{user_input}</div>', unsafe_allow_html=True)
+        st.session_state.messages.append({"role": "user", "content": user_input})
+
+        if "vectors" in st.session_state and st.session_state.vectors:
+            document_chain = create_stuff_documents_chain(llm, prompt)
+            retriever = st.session_state.vectors.as_retriever()
+            retrieval_chain = create_retrieval_chain(retriever, document_chain)
+
+            try:
+                response = retrieval_chain.invoke({'input': user_input})
+
+                if 'answer' in response and response['answer']:
+                    st.markdown(f'<div class="chat-message bot-message">{response["answer"]}</div>', unsafe_allow_html=True)
+                    st.session_state.messages.append({"role": "bot", "content": response['answer']})
+                else:
+                    st.error("No answer found for the given query.")
+            except Exception as e:
+                st.error(f"Error retrieving answer: {str(e)}")
+        else:
+            st.error("Vector store is not initialized.")
+
+
+
+
+
 # Input from user
-user_prompt = st.chat_input("Ask To Global Guru")
+user_prompt = st.chat_input("Ask To Legal Salahkar")
+
 
 # Display the question and get the answer if the button is clicked
 if user_prompt:
